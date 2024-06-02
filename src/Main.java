@@ -3,38 +3,38 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         WeightedGraph<String> graph = new WeightedGraph<>();
-        Vertex<String> almaty = new Vertex<>("Zhezkazgan");
+        Vertex<String> Zhezkazgan = new Vertex<>("Zhezkazgan");
         Vertex<String> astana = new Vertex<>("Astana");
-        Vertex<String> shymkent = new Vertex<>("Aktobe");
-        Vertex<String> atyrau = new Vertex<>("Almaty");
-        Vertex<String> kostanay = new Vertex<>("Ulytau");
-        Vertex<String> kyzylorda = new Vertex<>("Almaty");
+        Vertex<String> aktobe = new Vertex<>("Aktobe");
+        Vertex<String> almaty = new Vertex<>("Almaty");
+        Vertex<String> ulytau = new Vertex<>("Ulytau");
+        Vertex<String> kyzylorda = new Vertex<>("Kyzylorda");
 
-        graph.addVertex(almaty);
+        graph.addVertex(Zhezkazgan);
         graph.addVertex(astana);
-        graph.addVertex(shymkent);
-        graph.addVertex(atyrau);
-        graph.addVertex(kostanay);
+        graph.addVertex(aktobe);
+        graph.addVertex(almaty);
+        graph.addVertex(ulytau);
         graph.addVertex(kyzylorda);
 
+        graph.addEdge(Zhezkazgan, astana, 1.0);
+        graph.addEdge(aktobe, almaty, 1.0);
         graph.addEdge(almaty, astana, 1.0);
-        graph.addEdge(shymkent, atyrau, 1.0);
-        graph.addEdge(atyrau, astana, 1.0);
-        graph.addEdge(almaty, shymkent, 1.0);
-        graph.addEdge(shymkent, astana, 1.0);
-        graph.addEdge(astana, kostanay, 1.0);
-        graph.addEdge(shymkent, kyzylorda, 1.0);
+        graph.addEdge(Zhezkazgan, aktobe, 1.0);
+        graph.addEdge(aktobe, astana, 1.0);
+        graph.addEdge(astana, ulytau, 1.0);
+        graph.addEdge(aktobe, kyzylorda, 1.0);
 
         // Perform BFS
         System.out.println("BFS from Almaty:");
         BreadthFirstSearch<String> bfs = new BreadthFirstSearch<>(graph);
-        bfs.search(almaty);
+        bfs.search(Zhezkazgan);
         outputPath(bfs, kyzylorda);
 
         // Perform Dijkstra's search
         System.out.println("Dijkstra from Almaty:");
         DijkstraSearch<String> dijkstra = new DijkstraSearch<>(graph);
-        dijkstra.search(almaty);
+        dijkstra.search(Zhezkazgan);
         outputPath(dijkstra, kyzylorda);
     }
 
